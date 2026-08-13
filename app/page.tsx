@@ -115,6 +115,25 @@ export default function Home() {
             <i key={index} />
           ))}
         </div>
+        <div className="hero-ornaments" aria-hidden="true">
+          <div className="jasmine-strand jasmine-left">
+            {Array.from({ length: 6 }).map((_, index) => <i key={index} />)}
+          </div>
+          <div className="jasmine-strand jasmine-right">
+            {Array.from({ length: 6 }).map((_, index) => <i key={index} />)}
+          </div>
+          <div className="banana-cluster banana-left">
+            {Array.from({ length: 5 }).map((_, index) => <i key={index} />)}
+          </div>
+          <div className="banana-cluster banana-right">
+            {Array.from({ length: 5 }).map((_, index) => <i key={index} />)}
+          </div>
+          <div className="auspicious-rays">
+            {Array.from({ length: 12 }).map((_, index) => <i key={index} />)}
+          </div>
+          <div className="deepam deepam-left"><i /></div>
+          <div className="deepam deepam-right"><i /></div>
+        </div>
         <div className="kolam kolam-left" aria-hidden="true" />
         <div className="kolam kolam-right" aria-hidden="true" />
 
