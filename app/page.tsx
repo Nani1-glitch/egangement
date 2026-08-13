@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 
 const EVENT_TIME = new Date("2026-08-16T09:30:00+05:30").getTime();
 
@@ -37,6 +44,67 @@ function twoDigits(value: number) {
 export default function Home() {
   const [countdown, setCountdown] = useState<ReturnType<typeof getCountdown> | null>(null);
   const [sparkKey, setSparkKey] = useState(0);
+  const [musicState, setMusicState] = useState<"waiting" | "playing" | "paused">("waiting");
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const fadeFrameRef = useRef<number | null>(null);
+
+  const fadeMusicTo = useCallback((target: number, duration: number, onComplete?: () => void) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (fadeFrameRef.current !== null) {
+      window.cancelAnimationFrame(fadeFrameRef.current);
+    }
+
+    const initialVolume = audio.volume;
+    const startedAt = window.performance.now();
+
+    const fade = (time: number) => {
+      const progress = Math.min((time - startedAt) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      audio.volume = Math.max(0, Math.min(1, initialVolume + (target - initialVolume) * easedProgress));
+
+      if (progress < 1) {
+        fadeFrameRef.current = window.requestAnimationFrame(fade);
+      } else {
+        fadeFrameRef.current = null;
+        onComplete?.();
+      }
+    };
+
+    fadeFrameRef.current = window.requestAnimationFrame(fade);
+  }, []);
+
+  const startMusic = useCallback(async () => {
+    const audio = audioRef.current;
+    if (!audio) return false;
+
+    if (!audio.paused) {
+      setMusicState("playing");
+      return true;
+    }
+
+    audio.volume = 0;
+
+    try {
+      await audio.play();
+      setMusicState("playing");
+      fadeMusicTo(0.12, 2600);
+      return true;
+    } catch {
+      return false;
+    }
+  }, [fadeMusicTo]);
+
+  const pauseMusic = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio || audio.paused) return;
+
+    fadeMusicTo(0, 500, () => {
+      audio.pause();
+      setMusicState("paused");
+    });
+  }, [fadeMusicTo]);
 
   const calendarHref = useMemo(() => {
     const calendar = [
@@ -80,8 +148,62 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const beginOnFirstGesture = (event: PointerEvent | KeyboardEvent) => {
+      const target = event.target;
+      if (target instanceof Element && target.closest(".music-toggle")) return;
+
+      void startMusic().then((started) => {
+        if (!started) return;
+        window.removeEventListener("pointerdown", beginOnFirstGesture);
+        window.removeEventListener("keydown", beginOnFirstGesture);
+      });
+    };
+
+    window.addEventListener("pointerdown", beginOnFirstGesture, { passive: true });
+    window.addEventListener("keydown", beginOnFirstGesture);
+
+    return () => {
+      window.removeEventListener("pointerdown", beginOnFirstGesture);
+      window.removeEventListener("keydown", beginOnFirstGesture);
+    };
+  }, [startMusic]);
+
+  useEffect(() => {
+    return () => {
+      if (fadeFrameRef.current !== null) {
+        window.cancelAnimationFrame(fadeFrameRef.current);
+      }
+    };
+  }, []);
+
   return (
     <main className="invite-shell">
+      <audio ref={audioRef} loop preload="metadata">
+        <source src="/avunanavaa.m4a" type="audio/mp4" />
+      </audio>
+
+      <button
+        className="music-toggle"
+        type="button"
+        data-playing={musicState === "playing"}
+        aria-label={musicState === "playing" ? "Pause background music" : "Play background music"}
+        aria-pressed={musicState === "playing"}
+        onClick={() => {
+          if (audioRef.current?.paused ?? true) {
+            void startMusic();
+          } else {
+            pauseMusic();
+          }
+        }}
+      >
+        <span className="music-bars" aria-hidden="true"><i /><i /><i /></span>
+        <span className="music-copy">
+          <strong>{musicState === "playing" ? "Playing softly" : "Our song"}</strong>
+          <em>{musicState === "playing" ? "tap to pause" : "tap to play"}</em>
+        </span>
+      </button>
+
       <div className="petal-field" aria-hidden="true">
         {petals.map((petal, index) => (
           <i

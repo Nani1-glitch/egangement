@@ -156,6 +156,101 @@ button {
   font-style: normal;
 }
 
+.music-toggle {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 95;
+  display: flex;
+  min-width: 146px;
+  min-height: 50px;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 15px 8px 12px;
+  border: 1px solid rgba(200, 138, 40, 0.34);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, 0.86);
+  box-shadow: 0 10px 32px rgba(103, 24, 34, 0.12);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.music-toggle:hover {
+  background: rgba(255, 250, 240, 0.97);
+  box-shadow: 0 12px 36px rgba(103, 24, 34, 0.17);
+  transform: translateY(-2px);
+}
+
+.music-toggle:focus-visible {
+  outline: 2px solid var(--kumkum);
+  outline-offset: 3px;
+}
+
+.music-bars {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-radius: 50%;
+  background: rgba(200, 138, 40, 0.12);
+}
+
+.music-bars i {
+  width: 2px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--kumkum);
+  transform: scaleY(0.3);
+  transform-origin: center;
+}
+
+.music-toggle[data-playing="true"] .music-bars i {
+  animation: music-pulse 1s ease-in-out infinite alternate;
+}
+
+.music-toggle[data-playing="true"] .music-bars i:nth-child(2) {
+  animation-delay: -0.55s;
+}
+
+.music-toggle[data-playing="true"] .music-bars i:nth-child(3) {
+  animation-delay: -0.25s;
+}
+
+@keyframes music-pulse {
+  0% { transform: scaleY(0.28); }
+  100% { transform: scaleY(1); }
+}
+
+.music-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.music-copy strong {
+  color: var(--kumkum-dark);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.music-copy em {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .petal-field {
   position: fixed;
   inset: 0;
@@ -1848,6 +1943,24 @@ footer span {
     gap: 4px;
     font-size: 8px;
     letter-spacing: 0.035em;
+  }
+
+  .music-toggle {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    min-width: 132px;
+    min-height: 46px;
+    gap: 9px;
+    padding: 7px 13px 7px 10px;
+  }
+
+  .music-bars {
+    width: 22px;
+    height: 22px;
+  }
+
+  .music-copy strong {
+    font-size: 14px;
   }
 
   .hero {
