@@ -542,6 +542,7 @@ button {
   margin: 8px 0 0;
   align-items: center;
   justify-content: center;
+  column-gap: clamp(18px, 2.4vw, 44px);
   color: var(--kumkum-dark);
   font-family: var(--font-display), Georgia, serif;
   font-size: clamp(76px, 13vw, 168px);
@@ -563,7 +564,7 @@ button {
 .hero h1 em {
   position: relative;
   z-index: 2;
-  margin: 0 -0.01em;
+  margin: 0;
   color: var(--gold);
   font-size: 0.58em;
   font-weight: 400;
@@ -1444,16 +1445,16 @@ footer span {
 @media (max-width: 900px) {
   .hero h1 {
     flex-direction: column;
-    gap: 0;
+    gap: 0.16em;
     font-size: clamp(70px, 19.5vw, 98px);
     letter-spacing: -0.055em;
-    line-height: 0.76;
+    line-height: 0.8;
   }
 
   .hero h1 em {
-    margin: -0.06em 0 -0.1em;
-    font-size: 0.34em;
-    line-height: 0.75;
+    margin: 0.02em 0;
+    font-size: 0.32em;
+    line-height: 1;
     transform: rotate(-9deg);
   }
 
