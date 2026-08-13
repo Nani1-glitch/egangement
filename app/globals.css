@@ -1125,87 +1125,368 @@ button {
   min-height: 440px;
   place-items: center;
   background:
-    linear-gradient(35deg, transparent 47%, rgba(255, 250, 240, 0.06) 48% 52%, transparent 53%),
-    linear-gradient(145deg, transparent 47%, rgba(255, 250, 240, 0.06) 48% 52%, transparent 53%),
-    var(--leaf);
-  background-size: 70px 70px;
-  color: var(--ivory);
+    radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.75) 0 2px, transparent 3px),
+    radial-gradient(circle at 74% 66%, rgba(143, 36, 50, 0.1) 0 2px, transparent 3px),
+    linear-gradient(115deg, rgba(200, 138, 40, 0.09), transparent 42%),
+    #eee2d1;
+  background-size: 42px 42px, 55px 55px, auto, auto;
+  color: var(--ink);
   overflow: hidden;
+  isolation: isolate;
 }
 
-.venue-visual::before,
+.venue-visual::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    repeating-linear-gradient(24deg, transparent 0 46px, rgba(143, 36, 50, 0.025) 47px 49px, transparent 50px 92px);
+  content: "";
+  animation: map-drift 18s linear infinite;
+}
+
 .venue-visual::after {
   position: absolute;
-  width: 330px;
-  height: 330px;
-  border: 1px solid rgba(229, 183, 95, 0.16);
-  border-radius: 50%;
+  inset: 14px;
+  z-index: 8;
+  border: 1px solid rgba(143, 36, 50, 0.14);
+  pointer-events: none;
   content: "";
 }
 
-.venue-visual::after {
-  width: 230px;
-  height: 230px;
-  border-style: dotted;
+@keyframes map-drift {
+  to {
+    background-position: 92px 0;
+  }
+}
+
+.map-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: 340px;
+  transform: translate(-50%, -50%);
+}
+
+.map-road {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  height: 7px;
+  border-top: 1px solid rgba(200, 138, 40, 0.35);
+  border-bottom: 1px solid rgba(200, 138, 40, 0.25);
+  border-radius: 20px;
+  background: rgba(255, 253, 247, 0.94);
+  box-shadow: 0 0 0 5px rgba(213, 196, 168, 0.48);
+}
+
+.road-one {
+  top: 78px;
+  left: -35px;
+  width: 520px;
+  transform: rotate(18deg);
+}
+
+.road-two {
+  top: 218px;
+  left: -42px;
+  width: 510px;
+  transform: rotate(-17deg);
+}
+
+.road-three {
+  top: 154px;
+  left: 30px;
+  width: 370px;
+  transform: rotate(42deg);
+}
+
+.road-four {
+  top: 170px;
+  left: 62px;
+  width: 360px;
+  transform: rotate(-54deg);
+}
+
+.road-five {
+  top: 286px;
+  left: -30px;
+  width: 470px;
+  transform: rotate(8deg);
+}
+
+.map-block {
+  position: absolute;
+  z-index: 0;
+  display: block;
+  border: 1px solid rgba(143, 36, 50, 0.12);
+  border-radius: 10px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 12px, rgba(143, 36, 50, 0.04) 13px 14px),
+    rgba(255, 250, 240, 0.45);
+}
+
+.block-one {
+  top: 33px;
+  left: 28px;
+  width: 115px;
+  height: 75px;
+  transform: rotate(7deg);
+}
+
+.block-two {
+  right: 13px;
+  bottom: 24px;
+  width: 130px;
+  height: 94px;
+  transform: rotate(-5deg);
+}
+
+.block-three {
+  bottom: 8px;
+  left: 115px;
+  width: 90px;
+  height: 69px;
+  transform: rotate(11deg);
+}
+
+.map-water {
+  position: absolute;
+  right: -68px;
+  bottom: -46px;
+  z-index: 0;
+  display: block;
+  width: 255px;
+  height: 112px;
+  border-radius: 48% 52% 0 0;
+  background:
+    repeating-radial-gradient(ellipse at center, rgba(255, 255, 255, 0.28) 0 2px, transparent 3px 13px),
+    #b8ced0;
+  opacity: 0.56;
+  transform: rotate(-8deg);
+  animation: water-breathe 5s ease-in-out infinite alternate;
+}
+
+@keyframes water-breathe {
+  to {
+    transform: rotate(-5deg) translateY(-5px);
+  }
+}
+
+.map-landmark {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid rgba(103, 24, 34, 0.12);
+  border-radius: 20px;
+  background: rgba(255, 250, 240, 0.88);
+  box-shadow: 0 5px 14px rgba(103, 24, 34, 0.07);
+  color: #7a625b;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(5px);
+}
+
+.map-landmark > i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(200, 138, 40, 0.12);
+}
+
+.landmark-jail {
+  top: 47px;
+  left: 53px;
+}
+
+.landmark-fuel {
+  right: 25px;
+  bottom: 48px;
+}
+
+.route-origin {
+  position: absolute;
+  bottom: 59px;
+  left: 25px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--kumkum-dark);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.route-origin > i {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--kumkum);
+  border-radius: 50%;
+  background: var(--ivory);
+  box-shadow: 0 0 0 7px rgba(143, 36, 50, 0.1);
+}
+
+.route-line {
+  position: absolute;
+  top: 145px;
+  left: 47px;
+  z-index: 4;
+  width: 305px;
+  height: 105px;
+  border-top: 3px dashed rgba(143, 36, 50, 0.52);
+  border-radius: 50%;
+  transform: rotate(-12deg);
+  animation: route-pulse 2.4s ease-in-out infinite;
+}
+
+.route-line::after {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 6px rgba(200, 138, 40, 0.16);
+  content: "";
+}
+
+@keyframes route-pulse {
+  50% {
+    border-color: rgba(143, 36, 50, 0.92);
+    filter: drop-shadow(0 0 4px rgba(143, 36, 50, 0.22));
+  }
+}
+
+.route-heart {
+  position: absolute;
+  top: 235px;
+  left: 42px;
+  z-index: 7;
+  color: var(--kumkum);
+  font-size: 15px;
+  offset-path: path("M 0 0 C 70 -68 148 6 218 -78 C 252 -117 284 -111 318 -123");
+  offset-rotate: 0deg;
+  filter: drop-shadow(0 3px 3px rgba(103, 24, 34, 0.18));
+  animation: heart-route 5.5s ease-in-out infinite;
+}
+
+@keyframes heart-route {
+  0% {
+    opacity: 0;
+    offset-distance: 0%;
+    transform: scale(0.7);
+  }
+  12% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    offset-distance: 100%;
+    transform: scale(0.65);
+  }
 }
 
 .venue-visual p {
   position: absolute;
+  z-index: 7;
   bottom: 41px;
   left: 44px;
   margin: 0;
+  color: var(--kumkum-dark);
   font-family: var(--font-display), Georgia, serif;
   font-size: 31px;
   font-style: italic;
 }
 
-.venue-visual > span {
+.venue-visual > .map-date {
   position: absolute;
+  z-index: 7;
   top: 39px;
   right: 42px;
-  color: var(--gold-light);
+  color: var(--kumkum);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
 }
 
 .map-pin {
-  position: relative;
-  z-index: 3;
+  position: absolute;
+  top: 78px;
+  right: 62px;
+  z-index: 6;
   display: grid;
-  width: 82px;
-  height: 82px;
+  width: 70px;
+  height: 70px;
   place-items: center;
   border: 1px solid var(--gold-light);
   border-radius: 50% 50% 50% 8px;
   background: var(--kumkum);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 12px 30px rgba(103, 24, 34, 0.23);
   transform: rotate(-45deg);
   animation: map-bob 3s ease-in-out infinite;
 }
 
+.map-pin::after {
+  position: absolute;
+  inset: -13px;
+  border: 1px solid rgba(143, 36, 50, 0.28);
+  border-radius: 50%;
+  content: "";
+  animation: pin-ping 2.2s ease-out infinite;
+}
+
 .map-pin i {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border: 5px solid var(--ivory);
   border-radius: 50%;
 }
 
 @keyframes map-bob {
   50% {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(4px, -4px);
   }
 }
 
-.route-line {
+@keyframes pin-ping {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.72);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.destination-label {
   position: absolute;
-  top: 51%;
-  left: 14%;
-  width: 72%;
-  height: 80px;
-  border-top: 2px dashed rgba(229, 183, 95, 0.45);
-  border-radius: 50%;
-  transform: rotate(-12deg);
+  top: 159px;
+  right: 15px;
+  z-index: 6;
+  padding: 6px 9px;
+  border: 1px solid rgba(143, 36, 50, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 250, 240, 0.9);
+  color: var(--kumkum-dark);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+  box-shadow: 0 6px 16px rgba(103, 24, 34, 0.08);
 }
 
 .venue-copy {
@@ -1683,13 +1964,17 @@ footer span {
     min-height: 330px;
   }
 
+  .map-animation {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
   .venue-visual p {
     bottom: 28px;
     left: 27px;
     font-size: 25px;
   }
 
-  .venue-visual > span {
+  .venue-visual > .map-date {
     top: 27px;
     right: 27px;
   }

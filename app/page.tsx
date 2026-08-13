@@ -256,10 +256,26 @@ export default function Home() {
       <section className="venue-section section" id="venue">
         <div className="venue-card reveal" data-reveal>
           <div className="venue-visual" aria-hidden="true">
-            <div className="route-line" />
-            <div className="map-pin"><i /></div>
+            <div className="map-animation">
+              <i className="map-road road-one" />
+              <i className="map-road road-two" />
+              <i className="map-road road-three" />
+              <i className="map-road road-four" />
+              <i className="map-road road-five" />
+              <i className="map-block block-one" />
+              <i className="map-block block-two" />
+              <i className="map-block block-three" />
+              <i className="map-water" />
+              <span className="map-landmark landmark-jail"><i />Central Jail</span>
+              <span className="map-landmark landmark-fuel"><i />IOC Petrol Bunk</span>
+              <span className="route-origin"><i />You&apos;re invited</span>
+              <div className="route-line" />
+              <span className="route-heart">♥</span>
+              <div className="map-pin"><i /></div>
+              <span className="destination-label">Manjeera Sarovar</span>
+            </div>
             <p>Rajahmundry</p>
-            <span>16.08.26</span>
+            <span className="map-date">16.08.26</span>
           </div>
           <div className="venue-copy">
             <p className="eyebrow">Where to find us</p>
