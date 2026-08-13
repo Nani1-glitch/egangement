@@ -272,8 +272,8 @@ export default function Home() {
           <div className="hosts">
             <p>
               With warm regards<br />
-              <strong>Mr. & Mrs. M. V. V. S. Kumar</strong><br />
-              <strong>M. V. Durga</strong>
+              <strong>Mr. M. V. V. S. Kumar</strong><br />
+              <strong>& Mrs. M. V. Durga</strong>
             </p>
             <a href="tel:+919030088300">
               <span>RSVP</span>
