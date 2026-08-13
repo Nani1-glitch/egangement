@@ -104,9 +104,14 @@ export default function Home() {
         <a className="mini-monogram" href="#home" aria-label="Back to the beginning">
           P<span>&</span>N
         </a>
-        <a className="rsvp-link" href="tel:+919030088300">
-          RSVP <span>90300 88300</span>
-        </a>
+        <div className="rsvp-link" aria-label="RSVP phone numbers">
+          <strong>RSVP</strong>
+          <span className="rsvp-numbers">
+            <a href="tel:+919030088300">90300 88300</a>
+            <i>·</i>
+            <a href="tel:+919618636567">96186 36567</a>
+          </span>
+        </div>
       </header>
 
       <section className="hero" id="home">
@@ -310,10 +315,12 @@ export default function Home() {
               <strong>Mr. M. V. V. S. Kumar</strong><br />
               <strong>& Mrs. M. V. Durga</strong>
             </p>
-            <a href="tel:+919030088300">
+            <div className="host-rsvp">
               <span>RSVP</span>
-              90300 88300
-            </a>
+              <a href="tel:+919030088300">90300 88300</a>
+              <i>·</i>
+              <a href="tel:+919618636567">96186 36567</a>
+            </div>
           </div>
           <div className="family-monogram" aria-hidden="true">
             <span>P</span><em>&</em><span>N</span>
@@ -322,7 +329,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <p className="telugu-footer">రండి · ఆశీర్వదించండి · ఆనందించండి</p>
+        <p className="telugu-footer">మీ ఆశీస్సులతో మా కొత్త ప్రయాణానికి శ్రీకారం చుట్టండి</p>
         <p>Made with love for Pragya & Nithin</p>
         <span>16 August 2026</span>
       </footer>

@@ -126,13 +126,34 @@ button {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.18em;
-  line-height: 30px;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
-.rsvp-link span {
+.rsvp-link strong {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.rsvp-numbers {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   color: var(--muted);
   letter-spacing: 0.08em;
+}
+
+.rsvp-numbers a {
+  transition: color 220ms ease;
+}
+
+.rsvp-numbers a:hover {
+  color: var(--kumkum);
+}
+
+.rsvp-numbers i {
+  color: var(--gold);
+  font-style: normal;
 }
 
 .petal-field {
@@ -1610,7 +1631,47 @@ button {
   font-weight: 600;
 }
 
-.hosts a {
+.host-rsvp {
+  display: flex;
+  padding-left: 50px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-left: 1px solid rgba(200, 138, 40, 0.4);
+}
+
+.host-rsvp a {
+  color: var(--kumkum);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 22px;
+  line-height: 1.25;
+  white-space: nowrap;
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.host-rsvp a:hover {
+  color: var(--kumkum-dark);
+  transform: translateX(2px);
+}
+
+.host-rsvp i {
+  margin: -2px 0;
+  color: var(--gold);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 15px;
+  font-style: normal;
+}
+
+.host-rsvp > span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.hosts > a {
   padding-left: 50px;
   border-left: 1px solid rgba(200, 138, 40, 0.4);
   color: var(--kumkum);
@@ -1619,7 +1680,7 @@ button {
   white-space: nowrap;
 }
 
-.hosts a span {
+.hosts > a span {
   display: block;
   margin-bottom: 5px;
   color: var(--muted);
@@ -1769,8 +1830,24 @@ footer span {
     font-size: 16px;
   }
 
-  .rsvp-link span {
-    display: none;
+  .rsvp-link {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 1px;
+    border-bottom: 0;
+  }
+
+  .rsvp-link strong {
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(143, 36, 50, 0.35);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+  }
+
+  .rsvp-numbers {
+    gap: 4px;
+    font-size: 8px;
+    letter-spacing: 0.035em;
   }
 
   .hero {
@@ -2002,7 +2079,15 @@ footer span {
     text-align: center;
   }
 
-  .hosts a {
+  .host-rsvp {
+    padding-top: 24px;
+    padding-left: 0;
+    align-items: center;
+    border-top: 1px solid rgba(200, 138, 40, 0.4);
+    border-left: 0;
+  }
+
+  .hosts > a {
     padding-top: 24px;
     padding-left: 0;
     border-top: 1px solid rgba(200, 138, 40, 0.4);
