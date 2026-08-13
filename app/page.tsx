@@ -226,12 +226,10 @@ export default function Home() {
         <a className="mini-monogram" href="#home" aria-label="Back to the beginning">
           P<span>&</span>N
         </a>
-        <div className="rsvp-link" aria-label="RSVP phone numbers">
+        <div className="rsvp-link" aria-label="RSVP phone number">
           <strong>RSVP</strong>
           <span className="rsvp-numbers">
             <a href="tel:+919030088300">90300 88300</a>
-            <i>·</i>
-            <a href="tel:+919618636567">96186 36567</a>
           </span>
         </div>
       </header>
@@ -440,8 +438,6 @@ export default function Home() {
             <div className="host-rsvp">
               <span>RSVP</span>
               <a href="tel:+919030088300">90300 88300</a>
-              <i>·</i>
-              <a href="tel:+919618636567">96186 36567</a>
             </div>
           </div>
           <div className="family-monogram" aria-hidden="true">
