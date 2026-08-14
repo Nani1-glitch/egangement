@@ -149,6 +149,11 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- autoplay attempt reacts to the async audio.play() outcome, not a synchronous render loop
+    void startMusic();
+  }, [startMusic]);
+
+  useEffect(() => {
     const beginOnFirstGesture = (event: PointerEvent | KeyboardEvent) => {
       const target = event.target;
       if (target instanceof Element && target.closest(".music-toggle")) return;
@@ -175,6 +180,53 @@ export default function Home() {
         window.cancelAnimationFrame(fadeFrameRef.current);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const AUTO_SCROLL_SPEED = 42; // pixels per second
+    let rafId: number;
+    let startTime: number | null = null;
+    let startScrollY = 0;
+    let stopped = false;
+
+    const stopAutoScroll = () => {
+      if (stopped) return;
+      stopped = true;
+      window.cancelAnimationFrame(rafId);
+      window.removeEventListener("wheel", stopAutoScroll);
+      window.removeEventListener("touchstart", stopAutoScroll);
+      window.removeEventListener("pointerdown", stopAutoScroll);
+      window.removeEventListener("keydown", stopAutoScroll);
+    };
+
+    const step = (time: number) => {
+      if (stopped) return;
+      if (startTime === null) {
+        startTime = time;
+        startScrollY = window.scrollY;
+      }
+
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const target = Math.min(startScrollY + (AUTO_SCROLL_SPEED * (time - startTime)) / 1000, maxScroll);
+      window.scrollTo({ top: target, behavior: "instant" });
+
+      if (target >= maxScroll - 0.5) {
+        stopAutoScroll();
+        return;
+      }
+
+      rafId = window.requestAnimationFrame(step);
+    };
+
+    rafId = window.requestAnimationFrame(step);
+    window.addEventListener("wheel", stopAutoScroll, { passive: true });
+    window.addEventListener("touchstart", stopAutoScroll, { passive: true });
+    window.addEventListener("pointerdown", stopAutoScroll, { passive: true });
+    window.addEventListener("keydown", stopAutoScroll);
+
+    return stopAutoScroll;
   }, []);
 
   return (
