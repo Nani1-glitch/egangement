@@ -267,7 +267,9 @@ export default function Home() {
             శ్రీ
           </p>
           <p className="telugu-kicker">శుభ నిశ్చితార్థ ఆహ్వానం</p>
-          <p className="eyebrow hero-eyebrow">The Midde family joyfully invites you</p>
+          <p className="eyebrow hero-eyebrow">
+            The <span className="surname-highlight">Midde</span> family joyfully invites you
+          </p>
 
           <h1>
             <span>Pragya</span>
