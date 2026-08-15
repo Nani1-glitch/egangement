@@ -79,15 +79,23 @@ export default function Home() {
     const audio = audioRef.current;
     if (!audio) return false;
 
-    if (!audio.paused) {
+    if (!audio.paused && !audio.muted) {
       setMusicState("playing");
       return true;
     }
 
-    audio.volume = 0;
-
     try {
-      await audio.play();
+      if (audio.paused) {
+        // Browsers gate play() on the muted property, not volume, so a
+        // muted play() is allowed without a user gesture; unmuting an
+        // already-playing element afterward isn't re-gated.
+        audio.muted = true;
+        audio.volume = 0.12;
+        await audio.play();
+      }
+
+      audio.muted = false;
+      audio.volume = 0;
       setMusicState("playing");
       fadeMusicTo(0.12, 2600);
       return true;
@@ -154,23 +162,24 @@ export default function Home() {
   }, [startMusic]);
 
   useEffect(() => {
-    const beginOnFirstGesture = (event: PointerEvent | KeyboardEvent) => {
+    const gestureEvents = ["pointerdown", "keydown", "wheel", "touchstart"] as const;
+
+    const beginOnFirstGesture = (event: Event) => {
       const target = event.target;
       if (target instanceof Element && target.closest(".music-toggle")) return;
 
       void startMusic().then((started) => {
         if (!started) return;
-        window.removeEventListener("pointerdown", beginOnFirstGesture);
-        window.removeEventListener("keydown", beginOnFirstGesture);
+        gestureEvents.forEach((type) => window.removeEventListener(type, beginOnFirstGesture));
       });
     };
 
-    window.addEventListener("pointerdown", beginOnFirstGesture, { passive: true });
-    window.addEventListener("keydown", beginOnFirstGesture);
+    gestureEvents.forEach((type) =>
+      window.addEventListener(type, beginOnFirstGesture, { passive: true }),
+    );
 
     return () => {
-      window.removeEventListener("pointerdown", beginOnFirstGesture);
-      window.removeEventListener("keydown", beginOnFirstGesture);
+      gestureEvents.forEach((type) => window.removeEventListener(type, beginOnFirstGesture));
     };
   }, [startMusic]);
 
