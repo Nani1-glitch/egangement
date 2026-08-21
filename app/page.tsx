@@ -652,7 +652,7 @@ export default function Home() {
                 <br />
                 &amp; <strong>Smt. Sri Vidya</strong>
                 <br />
-                Chairman, Apollo Vidya Sansthalu (AP &amp; TS)
+                Chairman, Apollo Educational Institutions (AP &amp; TS)
               </p>
               <p className="family-note">Brother Chi. Dikshit Manikumar</p>
             </div>
