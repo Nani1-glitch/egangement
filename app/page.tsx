@@ -360,8 +360,7 @@ export default function Home() {
           </p>
           <p className="telugu-kicker">శుభ వివాహ ఆహ్వానం</p>
           <p className="eyebrow hero-eyebrow">
-            The <span className="surname-highlight">Midde</span> &amp;{" "}
-            <span className="surname-highlight">Rajulapati</span> families joyfully invite you
+            The <span className="surname-highlight">Midde</span> family joyfully invites you
           </p>
 
           <h1>
