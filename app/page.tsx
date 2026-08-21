@@ -640,7 +640,7 @@ export default function Home() {
             <div className="family-side">
               <span className="family-role">The Groom</span>
               <h3>Nithin</h3>
-              <p className="family-qualification">M.S. (USA) · Founder, Neuralyn</p>
+              <p className="family-qualification">M.S. (USA)</p>
               <p>
                 Son of
                 <br />
