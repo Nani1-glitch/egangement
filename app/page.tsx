@@ -434,13 +434,13 @@ export default function Home() {
         <div className="verse-card">
           <p className="eyebrow">A blessing for the sacred vows</p>
           <p className="verse-text">
-            జానక్యాః కమలామలాంజలి పుటే యా పద్మరాగాయితా
+            జానక్యాః కమలామలాంజలిపుటే యాః పద్మరాగాయితాః ।
             <br />
-            న్యస్తా రాఘవ మస్తకే విలసతాం ప్రసూనాయితా
+            న్యస్తా రాఘవమస్తకే తు విలసత్కుందప్రసూనాయితాః ॥
             <br />
-            ప్రస్తార్యామల కాయకాంతి కలితా యేంద్రనీలాయితా
+            స్రస్తాః శ్యామలకాయకాంతికలితాః యా ఇంద్రనీలాయితాః ।
             <br />
-            ముక్తాస్తా స్సుభదా భవన్తు భవతాం శ్రీరామవైవాహికాః
+            ముక్తాస్తాః శుభదా భవంతు భవతాం శ్రీరామవైవాహికాః ॥
           </p>
           <p className="verse-gloss">
             May the pearls of Sri Rama&rsquo;s own wedding, radiant as rubies and sapphires, bring
