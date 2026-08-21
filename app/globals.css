@@ -768,7 +768,6 @@ button {
   left: 0;
   border-radius: 0 50% 50% 50%;
   transform: translateX(-50%) rotate(45deg);
-  transform-origin: bottom center;
   animation: flame-flicker 1.6s ease-in-out infinite;
 }
 
