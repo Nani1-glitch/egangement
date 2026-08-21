@@ -30,24 +30,24 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = origin + "/og.png";
 
   return {
-    title: "Pragya & Nithin | Engagement Invitation",
+    title: "Pragya & Nithin | Wedding Invitation",
     description:
-      "With love, the Midde family invites you to celebrate Pragya and Nithin on 16 August 2026 at Manjeera Sarovar Premiere, Rajahmundry.",
+      "With love, the Midde and Rajulapati families invite you to the wedding of Pragya Tejasri and Nithin on 30 August 2026 at Suresh Convention Centre, Koyyalagudem, followed by a reception on 1 September 2026 in Dhavaleswaram.",
     icons: {
       icon: "/favicon.png",
       shortcut: "/favicon.png",
     },
     openGraph: {
-      title: "Pragya & Nithin are getting engaged",
-      description: "Join us on Sunday, 16 August 2026 at 9:30 AM in Rajahmundry.",
+      title: "Pragya & Nithin are getting married",
+      description: "Join us on Sunday, 30 August 2026 at 11:25 PM in Koyyalagudem, and for the reception on 1 September in Dhavaleswaram.",
       type: "website",
       url: origin,
-      images: [{ url: image, width: 1200, height: 630, alt: "Pragya and Nithin engagement invitation" }],
+      images: [{ url: image, width: 1200, height: 630, alt: "Pragya and Nithin wedding invitation" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Pragya & Nithin are getting engaged",
-      description: "Sunday, 16 August 2026 · 9:30 AM · Rajahmundry",
+      title: "Pragya & Nithin are getting married",
+      description: "Sunday, 30 August 2026 · 11:25 PM Muhurtham · Koyyalagudem",
       images: [image],
     },
   };
