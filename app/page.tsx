@@ -27,13 +27,13 @@ const petals = [
 ];
 
 const saptapadiSteps = [
-  { telugu: "మొదటి అడుగు", title: "Nourishment", meaning: "అన్న పానీయాల కోసం" },
-  { telugu: "రెండవ అడుగు", title: "Strength & Joy", meaning: "సుఖసంతోషాల కోసం" },
-  { telugu: "మూడవ అడుగు", title: "Sacred Vows", meaning: "వ్రతాల కోసం" },
-  { telugu: "నాలుగవ అడుగు", title: "Progeny", meaning: "సంతానం కోసం" },
-  { telugu: "ఐదవ అడుగు", title: "Prosperity", meaning: "పాడిపంటల కోసం" },
-  { telugu: "ఆరవ అడుగు", title: "Companionship", meaning: "సఖ్యత కోసం" },
-  { telugu: "ఏడవ అడుగు", title: "Everlasting Bond", meaning: "సంపద కోసం" },
+  { telugu: "మొదటి అడుగు", title: "Nourishment", meaning: "ఆహారం, పోషణ కోసం" },
+  { telugu: "రెండవ అడుగు", title: "Strength & Health", meaning: "బలం, ఆరోగ్యం కోసం" },
+  { telugu: "మూడవ అడుగు", title: "Prosperity", meaning: "ఐశ్వర్యం, సమృద్ధి కోసం" },
+  { telugu: "నాలుగవ అడుగు", title: "Happiness & Harmony", meaning: "సుఖసంతోషాలు, సామరస్యం కోసం" },
+  { telugu: "ఐదవ అడుగు", title: "Family & Progeny", meaning: "సంతానం, కుటుంబ శ్రేయస్సు కోసం" },
+  { telugu: "ఆరవ అడుగు", title: "Health & Longevity", meaning: "ఆరోగ్యం, దీర్ఘాయుష్షు కోసం" },
+  { telugu: "ఏడవ అడుగు", title: "Lifelong Companionship", meaning: "స్నేహం, సఖ్యత, జీవితాంత సహచర్యం కోసం" },
 ];
 
 function getCountdown() {
@@ -424,8 +424,8 @@ export default function Home() {
             and the warmth of family, in a beautifully adorned mandapam.
           </p>
           <p className="telugu-blessing">
-            ముత్యాల తలంబ్రాలతో – జాలువారే అక్షింతల నడుమ మా ప్రగ్యాతేజశ్రీ-నితిన్
-            ఒక్కటయ్యే మధుర క్షణాన మీ చల్లని దీవెనలు కోరుచున్నాము
+            ముత్యాల తలంబ్రాలు, జాలువారే అక్షింతల నడుమ మా ప్రగ్యా తేజశ్రీ&ndash;నితిన్
+            ఒక్కటయ్యే ఈ మధుర క్షణాన మీ చల్లని దీవెనలు కోరుచున్నాము
           </p>
         </div>
       </section>
@@ -440,7 +440,7 @@ export default function Home() {
             <br />
             స్రస్తాః శ్యామలకాయకాంతికలితాః యా ఇంద్రనీలాయితాః ।
             <br />
-            ముక్తాస్తాః శుభదా భవంతు భవతాం శ్రీరామవైవాహికాః ॥
+            ముక్తాస్తాశ్శుభదా భవంతు భవతాం శ్రీరామవైవాహికాః ॥
           </p>
           <p className="verse-gloss">
             May the pearls of Sri Rama&rsquo;s own wedding, radiant as rubies and sapphires, bring
