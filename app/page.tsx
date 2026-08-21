@@ -637,6 +637,7 @@ export default function Home() {
                 With the divine blessings of Sri Midde Malleswara Rao &amp; Sri Midde Suresh Kumar
               </p>
               <p className="family-note">Nanamma Midde Adilakshmi</p>
+              <p className="family-note">Brother Chi. Dikshit Manikumar</p>
             </div>
 
             <div className="family-side">
@@ -654,7 +655,7 @@ export default function Home() {
                 <br />
                 Chairman, Apollo Educational Institutions (AP &amp; TS)
               </p>
-              <p className="family-note">Brother Chi. Dikshit Manikumar</p>
+              <p className="family-note">Sister Rajulapati Niveditha</p>
             </div>
           </div>
 
