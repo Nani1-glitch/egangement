@@ -372,23 +372,26 @@ export default function Home() {
           <p className="hero-subtitle">are tying the sacred knot</p>
 
           <button
-            className="ring-seal"
+            className="agni-seal"
             type="button"
             aria-label="Celebrate Pragya and Nithin's wedding"
             onClick={() => setSparkKey((value) => value + 1)}
           >
-            <span className="ring ring-one" />
-            <span className="ring ring-two" />
-            <span className="diamond" />
+            <span className="agni-flame" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <span className="agni-base" aria-hidden="true" />
             {sparkKey > 0 && (
-              <span className="heart-burst" key={sparkKey} aria-hidden="true">
-                {["♥", "♥", "♥", "♥", "♥", "♥"].map((heart, index) => (
-                  <i key={sparkKey + "-" + index}>{heart}</i>
+              <span className="spark-burst" key={sparkKey} aria-hidden="true">
+                {["✦", "✦", "✦", "✦", "✦", "✦"].map((spark, index) => (
+                  <i key={sparkKey + "-" + index}>{spark}</i>
                 ))}
               </span>
             )}
           </button>
-          <p className="tiny-whisper">tap the rings</p>
+          <p className="tiny-whisper">tap the sacred flame</p>
 
           <div className="hero-date" aria-label="Sunday, 30 August 2026, Muhurtham at 11:25 PM">
             <span>Sunday</span>
